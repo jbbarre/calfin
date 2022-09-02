@@ -1,19 +1,14 @@
 
 # CALFIN
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![DOI](https://zenodo.org/badge/185285507.svg)](https://zenodo.org/badge/latestdoi/185285507)
 
 Calving Front Machine. Automated detection of glacial terminus positions, using neural networks.
 
-## Introduction
-This is the official codebase for [Calving Front Machine (CALFIN): an Automated Deep Learning Glacial Terminus Extraction Method [1]](https://tc.copernicus.org/preprints/tc-2020-231/#discussion). 
-We provide an automated pipeline using a modified DeepLabV3+ with Xception neural network. 
-The mean distance error is 2.25 pixels (86.76 meters) from the true front on a diverse set of 162 validation images.
+Project forked from @daniel-cheng who developped the codebase for [Calving Front Machine (CALFIN): an Automated Deep Learning Glacial Terminus Extraction Method [1]](https://tc.copernicus.org/preprints/tc-2020-231/#discussion). 
 
-The method is used to generate the CALFIN dataset, consisting of 22,678 total calving fronts spanning 66 Greenlandic basins, from Sept. 1972 - June 2019.
-[The CALFIN dataset can be downloaded at DataDryad [2]](https://doi.org/10.7280/D1FH5D).
+Over time, this version can differ from the original.
 
-![Arch Final](https://github.com/daniel-cheng/CALFIN/blob/master/paper/arch_final.png)
+
 
 ## Running CALFIN
 The CALFIN codebase allows for execution of the automated pipeline on new data, as well as the training of the CALFIN neural network on new data.
