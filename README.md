@@ -9,7 +9,6 @@ Project forked from @daniel-cheng who developped the codebase for [Calving Front
 Over time, this version can differ from the original.
 
 
-
 ## Running CALFIN
 The CALFIN codebase allows for execution of the automated pipeline on new data, as well as the training of the CALFIN neural network on new data.
 To continue, select the desired section(s) from the table of contents below.
@@ -47,63 +46,3 @@ To continue, select the desired section(s) from the table of contents below.
 If you plan to use CALFIN on a domain outside of the existing set, be familiar with the training set and the set of conditions CALFIN can handle (see [[1]](#references)). CALFIN was trained using Landsat (optical) and Sentinel-1 (SAR) data. The training set includes 1600+ Greenlandic glaciers and 200+ Antarctic glaciers/ice shelves. CALFIN can handle ice tongues, branching, Landsat 7 Scanline Corrector Errors, sea ice, shadows, and light cloud cover. 
 
 CALFIN requires a fjord boundaries mask in order to function - these must be created manually, then geolocated as a GeoTiff to enable Shapefile outputs. Optionally, create fjord boundary overrides to enforce static fronts not captured in the fjrod boundary mask or in CALFIN output. See also [`training/data/fjord_boundaries`](https://github.com/daniel-cheng/CALFIN/tree/master/training/data/fjord_boundaries), [`training/data/fjord_boundaries_tif`](https://github.com/daniel-cheng/CALFIN/tree/master/training/data/fjord_boundaries), and [`preprocessing/bulk_png_to_geotiff.py`](https://github.com/daniel-cheng/CALFIN/tree/master/preprocessing/bulk_png_to_geotiff.py).
-
-## ISSM integration (in development)
-CALFIN can be executed from the [Ice-Sheet and Sea-level System Model](http://issm.jpl.nasa.gov/).
-
-### Preprocessing
-First, we perform Subsetting, which is the finding of the tiles within a larger image that correspond to an area of interest. 
-1. Download GeoTIFF images from EarthExplorer.gov
-	1. Select a location on the map
-	2. Select a time frame
-	3. Select DataSets and select collections such as Landsat > Landsat Collection 1 > Landsat Collection 1 Level-1 > Landsat 8
-	4. Viewing the results and download all relevant images via the download button and selecting the LandsatLook Images with Geographic Reference data product. Optionally, use the Bulk Download Assistant to download them automatically.
-2. Unzip the RGB .tif images and subset them using QGIS (TODO).
-3. Place output .tifs to process in `/home/ubuntu/Repos/CALFIN/processing/testing`
-
-### Processing
-Then, we can run CALFIN to extract coastlines/calving fronts from the subsets.
-4. Open Matlab and add ISSM to the path by executing `addpath(genpath('/home/ubuntu/Repos/issm/issm/trunk-jpl-working/src/m'))`.
-5. Create a `calfin` object by executing `cf = calfin();`.
-6. Solve for calving fronts/coastlines using CALFIN by executing `cf.solve()`.
-7. View the results view the figures or via the folder `/home/ubuntu/Repos/CALFIN/outputs/testing/quality_assurance`.
-
-## Citation
-If you find this code helpful, please cite as below:
-````
-@article{ChengHLMWVR2020,
-	title={Calving Front Machine (CALFIN): Glacial Termini Dataset and 
-			Automated Deep Learning Extraction Method for Greenland, 1972-2019},
-	author={Daniel Cheng and Wayne Hayes and Eric Larour and Yara Mohajerani and 
-			Michael Wood and Isabella Velicogna and Eric Rignot},
-	journal={The Cryosphere Discussions},
-	url = {https://tc.copernicus.org/preprints/tc-2020-231/},
-	doi = {10.5194/tc-2020-231},
-	year={2020}
-}
-
-@dataset{ChengHL2020,
-	title={CALFIN: Calving Front Dataset for East/West Greenland, 1972-2019},
-	author={Daniel Cheng and Wayne Hayes and Eric Larour},
-	url={https://datadryad.org/stash/dataset/doi:10.7280/D1FH5D},
-	doi={10.7280/D1FH5D},
-	year={2020}
-}
-````
-
-## References
-[1] Cheng, D., Hayes, W., Larour, E., Mohajerani, Y., Wood, M., Velicogna, I. and Rignot, E.: 
-	Calving Front Machine (CALFIN): Glacial Termini Dataset and Automated Deep Learning Extraction Method for Greenland, 1972-2019, 
-	The Cryosphere Discussions, 1–17, https://doi.org/10.5194/tc-2020-231, 2020.
-
-[2] Cheng, D., Hayes, W. and Larour, E.: CALFIN: Calving front dataset for East/West Greenland, 1972-2019, https://doi.org/10.7280/D1FH5D, 2020.
-
-## Acknowledgements
-This work was conducted as a collaboration between NASA’s Jet Propulsion Laboratory and the University of California, Irvine.
-
-The CALFIN neural network architecture implementation is derived from [Emil Zakirov’s Deeplabv3+ Xception codebase](github.com/bonlime/keras-deeplab-v3-plus). 
-
-We acknowledge the USGS for providing Landsat-1-8 images, the ESA for their Sentinel-1 images, as well as the ESA-CCI, PROMICE, and MEaSUREs programs for providing calving front data used in this study.
-
-## Contact
-For questions, contact [dlcheng@uci.edu](mailto:dlcheng@uci.edu).
