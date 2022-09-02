@@ -6,8 +6,7 @@ Calving Front Machine. Automated detection of glacial terminus positions, using 
 
 Project forked from @daniel-cheng who developped the codebase for [Calving Front Machine (CALFIN): an Automated Deep Learning Glacial Terminus Extraction Method [1]](https://tc.copernicus.org/preprints/tc-2020-231/#discussion). 
 
-Over time, this version can differ from the original.
-
+Over time, this version will differ from the original.
 
 ## Running CALFIN
 The CALFIN codebase allows for execution of the automated pipeline on new data, as well as the training of the CALFIN neural network on new data.
